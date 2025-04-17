@@ -1,1 +1,42 @@
 # 京东订单接入
+## 获取token
+
+## 发起支付
+```go
+POST https://api.m.jd.com/client.action?functionId=platWapWXPay&appid=mcashier&scval=mpay HTTP/1.1
+Host: api.m.jd.com
+Connection: keep-alive
+Content-Length: 911
+sec-ch-ua-platform: "Android"
+sec-ch-ua: "Microsoft Edge";v="135", "Not-A.Brand";v="8", "Chromium";v="135"
+sec-ch-ua-mobile: ?1
+User-Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Mobile Safari/537.36 EdgA/135.0.0.0
+accept: application/json, text/plain, */*
+x-referer-page: https://mpay.m.jd.com/mpay.f129e5329c5358dbb38b.html
+content-type: application/x-www-form-urlencoded
+x-rp-client: h5_1.0.0
+Origin: https://mpay.m.jd.com
+Sec-Fetch-Site: same-site
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: https://mpay.m.jd.com/
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: zh-CN,zh;q=0.9,en-GB;q=0.8,en-US;q=0.7,en;q=0.6
+Cookie: unpl=JF8EAKRnNSttUE9dV0xWHxBAH1UGW15YQ0cCaGYBUlldQgZWGQobERN7XlVdWRRKFR9vbxRVVFNJVQ4ZCisSF3teVV1eCE8VAGhgNWRtW0tkBCsCHRcTSVhRXVgJTRYHb28HV1VRT1MCEzIaIhdLVGReXwxIFwNoZjVkXGhKZAQrVHUSEUpcVV9YDEwQTm9hAFdfXU5XABoEGhYQQ19XVlQMTBALX2Y1Vw; mba_muid=17423442407051932985669; retina=1; cid=9; webp=1; visitkey=8236189737561370883; sc_width=360; shshshfpa=d9b1e4ec-8755-3da7-b72d-d7d5b6e7b56c-1742344244; shshshfpx=d9b1e4ec-8755-3da7-b72d-d7d5b6e7b56c-1742344244; __jda=76161171.17423442407051932985669.1742344240.1742344242.1744887302.3; __jdc=76161171; __jdv=76161171|cn.bing.com|-|referral|-|1744887302161; wxa_level=1; jxsid=17448873032170131801; cd_eid=jdd03225EAZ7YH3TNTBALAKUIVIKTE5TAOKR5CZJGFFEMPAXD3RK3YKNNQELZ3REJJIGIITKRIV5KLYVKRQURU4HQJ7CWFQAAAAMWINRUY3AAAAAAD6O67TCT46TLMEX; appCode=ms0ca95114; shshshfpb=BApXSzR9rQPNAR0r8dRLTEwXkvqINIQS2BgB1RWtp9xJ1Mogrx4G2; jcap_dvzw_fp=x6t2N-u0Dg9bstyQJYi8lCjLx1iAIsfe0l9uiXJls2JSLsTrupebw-hkfh-ZYRx-fsdFch8Qo3xR5mM3zAoA5w==; TrackerID=q3XuQ57BjtZ79bj40h-WhRGpflPajGGJbFi5PYTDajxce7Wf4lAP3vWza3Oz0ClP5UsbBVR8eNkD98U3bw_Ug-bGkh5LsjGaYBVAcqOudR7aokUN9eO-uNHTdVSfG78g; pt_key=AAJoAN4zADBfHNDU2e2RzpF633dvty6VKlKsbQ3aHI_747ywhqN1vtHWMn7qiq84ayuo90-aZb8; pt_pin=wjf19940211; pt_token=3t0ivuah; pwdt_id=wjf19940211; sfstoken=tk01mbe771cbea8sMngxeDMrMWRCLFFcpDeuR46VRFQIqcU+zZJnaJxnKBpBqTx3L/3VxU5oqsM0CMzOx56vzllYiWEd; whwswswws=; autoOpenApp_downCloseDate_jd_homePage=1744887351141_1; warehistory="845198,13521160,"; wqmnx1=MDEyNjM3M3BlLm80dD12LzkxMTdGZDQ0cD02NThsKCBkKVc1KCBlaDMwZWk2MS5GN2YyMUVPSCg%3D; __wga=1744887518675.1744887518675.1742344244160.1742344244160.1.2; jxsid_s_u=https%3A//item.m.jd.com/product/845198.html; autoOpenApp_downCloseDate_autoOpenApp_autoPromptly=1744887518924_1; PPRD_P=UUID.17423442407051932985669-LOGID.1744887532218.1163318217; jxsid_s_t=1744887532272; __jdb=76161171.7.17423442407051932985669|3.1744887302; 3AB9D23F7A4B3CSS=jdd03225EAZ7YH3TNTBALAKUIVIKTE5TAOKR5CZJGFFEMPAXD3RK3YKNNQELZ3REJJIGIITKRIV5KLYVKRQURU4HQJ7CWFQAAAAMWINZ6CYYAAAAACTMA67YKK2YQYMX; 3AB9D23F7A4B3C9B=225EAZ7YH3TNTBALAKUIVIKTE5TAOKR5CZJGFFEMPAXD3RK3YKNNQELZ3REJJIGIITKRIV5KLYVKRQURU4HQJ7CWFQ; _gia_d=1; pt_st=1_ONpGI6yzI-XUfTv0hshmWeRK7gOuM77wocTJB4SiDRibW7B4JYRL-zYqRLbU2AsFjbBr2rEPdCxyV7Jnuyte9qg5QSsGAA5agDuZ6m42S8bSn_M4peCHn9f4oxNw2vjskurLXKp4AtB15Ubcf_ARpS8-9K-JB05PrNT8nU97q10pa6uRpyacNO54erqandeKpnLEwcj3TaxWL6KMZbxw-sROUh0DBwRDsV**; mba_sid=17448873032981991809848.10; sdtoken=AAbEsBpEIOVjqTAKCQtvQu174Ovg9SpjOdUdWNqlqc8lSdaI2B_O5cfeaId055q2S3QiLx0Yndyq8yie2Uz8AKN6kOqJmZZoqrZvlzeLFwOaeXJW1-ZfwjGoXznAMWtxZJMq4mxu0-RjH5BPE6qPd2HbCg; __jd_ref_cls=MCashierNew_ConfirmPayment
+
+body=%7B%22appId%22%3A%22m_kSqlzBic%22%2C%22payId%22%3A%220143073184024874ad3a9b12f71afceb%22%2C%22eid%22%3A%22225EAZ7YH3TNTBALAKUIVIKTE5TAOKR5CZJGFFEMPAXD3RK3YKNNQELZ3REJJIGIITKRIV5KLYVKRQURU4HQJ7CWFQ%22%2C%22source%22%3A%22mcashier%22%2C%22origin%22%3A%22h5%22%2C%22mcashierTraceId%22%3A1744888389354%7D&x-api-eid-token=jdd03225EAZ7YH3TNTBALAKUIVIKTE5TAOKR5CZJGFFEMPAXD3RK3YKNNQELZ3REJJIGIITKRIV5KLYVKRQURU4HQJ7CWFQAAAAMWINZ6CYYAAAAACTMA67YKK2YQYMX&h5st=20250417191334246%3B9144993414603527%3B303a7%3Btk03w87ab1b2018nLEF5wAKuGLrTpRWSR8LzLYFd1OinDhbEq-9v5wUHJAAtiQin2oM3e80AEzfw031PX88ZJwScD4go%3B4054d41b506ef534fcbdb8b3ec2154e0124c33bca1b71c6eeb5d08f53822c22a%3B3.1%3B1744888414246%3B62f4d401ae05799f14989d31956d3c5ff9d35894c0cddd9a08e2fe40b8bf72210a5aa1465bc1dd53091b529144bf5e400aedfae6101bc11e79cf6183417750665c6c14ee231b1730ba326ada6d6fbdaa759e23c42eac85a22e7e0dd559740d70b2d90e143289aa082f5efbec2999832a
+```
+结果
+```go
+{
+    "code": "0",
+    "payId": "0143073184024874ad3a9b12f71afceb",
+    "payInfo": {
+        "payEnum": "1125",
+        "mweb_url": "https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb?prepay_id=wx17191335126889b14e14cf11a4215a0001&package=2353301687",
+        "prepayId": "wx17191335126889b14e14cf11a4215a0001",
+        "payId": "0143073184024874ad3a9b12f71afceb"
+    },
+    "payScene": "cashier"
+}
+```
